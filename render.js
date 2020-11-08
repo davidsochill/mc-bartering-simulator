@@ -166,6 +166,5 @@ $("#simulate").click(function() {
     let desired_amount = parseInt($("#desired-amount").val())
     let res = runSimulations(simulations, gold, desired_item, desired_amount)
 
-    console.log(res)
     renderSimulation(res)
 });
