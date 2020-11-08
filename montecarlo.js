@@ -155,7 +155,7 @@ function runSimulations(simulations, gold, desired_item, desired_amount) {
                     
             }    
 
-            if (successes != undefined && item_drops > desired_amount && desired_item == item.name) {
+            if (successes != undefined && item_drops >= desired_amount && desired_item == item.name) {
                 successes = successes + 1
             }
 
@@ -172,7 +172,7 @@ function runSimulations(simulations, gold, desired_item, desired_amount) {
             simulations: simulations,
             successes: successes,
             gold: gold,
-            percentage: (successes / simulations).toFixed(4) * 100
+            percentage: ((successes / simulations) * 100).toFixed(4)
         }
     }
 
