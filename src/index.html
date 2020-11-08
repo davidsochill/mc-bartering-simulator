@@ -1,0 +1,85 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    </head>
+    <body>
+        <nav class="navbar navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">Minecraft 1.16.1 Piglin Trade Monte Carlo Simulator</a>
+        </nav>
+        <div class="container">
+            </br>
+            <h3>Required Parameters: </h3>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Simulations: (n=?)</span>
+                </div>
+                <input id="simulations" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" value="10000">
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Amount of gold: </span>
+                </div>
+                <input id="gold" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" value="30">
+            </div>
+            <h3>Optional Parameters: </h3>
+            <select id="target-select" class="custom-select">
+                <script id="select-template" type="x-tmpl-mustache">
+                    <option selected>Choose a desired item</option>
+                    {{#items}}
+                        <option value="{{name}}">{{name}}</option>
+                    {{/items}}
+                </script>
+            </select>
+            <div class="input-group mb-3" style="padding-top: 15px">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Desired amount: </span>
+                </div>
+                <input id="desired-amount" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+            </div>
+            <button id="simulate" type="button" class="btn btn-dark">Simulate</button>
+
+
+            <span id="target-probability"></span>                 
+            <script id="probability-template" type="x-tmpl-mustache">
+                {{#probability}}
+                    </br></br>
+                    <span style="margin-top: 50px">
+                        Your desired item <b>"{{desired_item}}"</b> was dropped over <b>{{desired_amount}}</b> or more times in <b>{{successes}}</b> out of <b>{{simulations}}</b> simulations <b>({{percentage}}%)</b> when gold was dropped <b>{{gold}}</b> times. 
+                    </span>     
+                {{/probability}}
+            </script> 
+
+            </br></br>
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Item Name</th>
+                        <th scope="col">Probability</th>
+                        <th scope="col">Minimum Drop</th>
+                        <th scope="col">Maximum Drop</th>
+                        <th scope="col">Average Quantity</th>
+                    </tr>
+                </thead>
+                <tbody id="target-table"></tbody>  
+                <script id="table-template" type="x-tmpl-mustache">
+                    {{#items}}
+                        <tr>
+                            <th scope="col">{{name}}</th>
+                            <td>{{drop_probability}}</td>
+                            <td>{{min_quantity}}</td>
+                            <td>{{max_quantity}}</td>
+                            <td>{{average_drops}}</td>
+                        </tr>
+                    {{/items}}
+                </script>
+            </table>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/mustache@latest"></script>
+        <script src="montecarlo.js"></script>
+        <script src="render.js"></script>
+    </body>
+</html>

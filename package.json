@@ -1,0 +1,15 @@
+{
+  "name": "probability_scripting",
+  "version": "1.0.0",
+  "description": "",
+  "main": "enderpearls.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "handlebars": "^4.7.6",
+    "mustache": "^4.0.1"
+  }
+}
